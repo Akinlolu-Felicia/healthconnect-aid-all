@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -15,13 +16,22 @@ import {
   MapPin,
   Star
 } from "lucide-react";
-import { HealthAssistant } from "@/components/HealthAssistant";
-import { DoctorDirectory } from "@/components/DoctorDirectory";
-import { HealthDashboard } from "@/components/HealthDashboard";
+import { FunctionalHealthAssistant } from "@/components/FunctionalHealthAssistant";
+import { FunctionalDoctorDirectory } from "@/components/FunctionalDoctorDirectory";
+import { FunctionalHealthDashboard } from "@/components/FunctionalHealthDashboard";
 import { EmergencySupport } from "@/components/EmergencySupport";
+import { useAuth } from "@/hooks/useAuth";
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState("home");
+  const { user, loading, signOut } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!loading && !user) {
+      navigate("/auth");
+    }
+  }, [user, loading, navigate]);
 
   const features = [
     {
@@ -77,8 +87,12 @@ const Index = () => {
                 <div className="w-2 h-2 rounded-full bg-success" />
                 Available 24/7
               </Badge>
-              <Button variant="medical" size="sm">
-                Sign In
+              <Button 
+                variant="medical" 
+                size="sm"
+                onClick={signOut}
+              >
+                Sign Out
               </Button>
             </div>
           </div>
@@ -245,15 +259,15 @@ const Index = () => {
 
           {/* Other Tabs */}
           <TabsContent value="assistant">
-            <HealthAssistant />
+            <FunctionalHealthAssistant />
           </TabsContent>
 
           <TabsContent value="doctors">
-            <DoctorDirectory />
+            <FunctionalDoctorDirectory />
           </TabsContent>
 
           <TabsContent value="dashboard">
-            <HealthDashboard />
+            <FunctionalHealthDashboard />
           </TabsContent>
 
           <TabsContent value="emergency">
