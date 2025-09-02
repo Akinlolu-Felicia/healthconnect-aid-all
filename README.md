@@ -1,73 +1,54 @@
-# Welcome to your Lovable project
+🌍 HealthConnect
 
-## Project info
+HealthConnect is a web application designed to address United Nations Sustainable Development Goal 3 (Good Health and Well-being) by providing accessible, affordable, and preventive healthcare support through technology.
 
-**URL**: https://lovable.dev/projects/9f38466c-a5ca-4a5c-988f-d79067a280b3
+🔗 Live Demo: https://healthconnect-xi.vercel.app/
 
-## How can I edit this code?
+🚀 Features
+🧑‍⚕️ AI-powered Health Assistant
 
-There are several ways of editing your application.
+Symptom checker: Users input symptoms, and the chatbot suggests possible causes & advice.
 
-**Use Lovable**
+Verified health education tips: Nutrition, hygiene, maternal health, exercise, etc.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/9f38466c-a5ca-4a5c-988f-d79067a280b3) and start prompting.
+Mental health support: Mood tracking and self-help prompts.
 
-Changes made via Lovable will be committed automatically to this repo.
+📞 Telemedicine & Doctor Connection
 
-**Use your preferred IDE**
+Book video, audio, or text consultations with doctors.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Searchable directory of clinics and pharmacies.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+📊 Health Tracker
 
-Follow these steps:
+Track health conditions and medications.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Reminders for medicine schedules.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Monitor personal health history and progress.
 
-# Step 3: Install the necessary dependencies.
-npm i
+🚨 Emergency Services
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+One-click emergency button to connect with nearby hospitals/health centers.
 
-**Edit a file directly in GitHub**
+Location-based assistance to get help faster.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+🎯 Why HealthConnect?
 
-**Use GitHub Codespaces**
+Accessibility: Brings healthcare support to underserved areas.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Affordability: Lowers barriers to medical advice and doctor consultations.
 
-## What technologies are used for this project?
+Prevention-first approach: Empowers people to manage their health proactively.
 
-This project is built with:
+Scalability: A solution adaptable to different regions and healthcare systems.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+📌 Tech Stack
 
-## How can I deploy this project?
+Frontend: React.js / Next.js
 
-Simply open [Lovable](https://lovable.dev/projects/9f38466c-a5ca-4a5c-988f-d79067a280b3) and click on Share -> Publish.
+Backend: Node.js / Express (future integration)
 
-## Can I connect a custom domain to my Lovable project?
+AI/ML: Chatbot for symptom checking and health tips
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Deployment: Vercel
