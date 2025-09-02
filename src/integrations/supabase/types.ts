@@ -100,6 +100,45 @@ export type Database = {
         }
         Relationships: []
       }
+      chronic_disease_plans: {
+        Row: {
+          condition_name: string
+          created_at: string
+          diagnosis_date: string | null
+          goals: string[] | null
+          id: string
+          is_active: boolean | null
+          severity: string | null
+          treatment_plan: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          condition_name: string
+          created_at?: string
+          diagnosis_date?: string | null
+          goals?: string[] | null
+          id?: string
+          is_active?: boolean | null
+          severity?: string | null
+          treatment_plan?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          condition_name?: string
+          created_at?: string
+          diagnosis_date?: string | null
+          goals?: string[] | null
+          id?: string
+          is_active?: boolean | null
+          severity?: string | null
+          treatment_plan?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       doctors: {
         Row: {
           available_hours: Json | null
@@ -151,6 +190,116 @@ export type Database = {
           rating?: number | null
           specialty?: string
           updated_at?: string | null
+        }
+        Relationships: []
+      }
+      emergency_contacts: {
+        Row: {
+          created_at: string
+          email: string | null
+          id: string
+          is_primary: boolean | null
+          name: string
+          phone: string
+          relationship: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          is_primary?: boolean | null
+          name: string
+          phone: string
+          relationship: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          is_primary?: boolean | null
+          name?: string
+          phone?: string
+          relationship?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      forum_comments: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          post_id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id?: string
+          post_id: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          post_id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "forum_comments_post_id_fkey"
+            columns: ["post_id"]
+            isOneToOne: false
+            referencedRelation: "forum_posts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      forum_posts: {
+        Row: {
+          category: string
+          content: string
+          created_at: string
+          downvotes: number | null
+          id: string
+          tags: string[] | null
+          title: string
+          updated_at: string
+          upvotes: number | null
+          user_id: string
+        }
+        Insert: {
+          category?: string
+          content: string
+          created_at?: string
+          downvotes?: number | null
+          id?: string
+          tags?: string[] | null
+          title: string
+          updated_at?: string
+          upvotes?: number | null
+          user_id: string
+        }
+        Update: {
+          category?: string
+          content?: string
+          created_at?: string
+          downvotes?: number | null
+          id?: string
+          tags?: string[] | null
+          title?: string
+          updated_at?: string
+          upvotes?: number | null
+          user_id?: string
         }
         Relationships: []
       }
@@ -321,6 +470,87 @@ export type Database = {
           phone?: string | null
           updated_at?: string | null
           user_id?: string
+        }
+        Relationships: []
+      }
+      surveillance_reports: {
+        Row: {
+          created_at: string
+          disease_type: string
+          id: string
+          is_confirmed: boolean | null
+          location_lat: number | null
+          location_lng: number | null
+          location_name: string | null
+          reported_at: string
+          severity: string
+          symptoms: string[] | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          disease_type: string
+          id?: string
+          is_confirmed?: boolean | null
+          location_lat?: number | null
+          location_lng?: number | null
+          location_name?: string | null
+          reported_at?: string
+          severity?: string
+          symptoms?: string[] | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          disease_type?: string
+          id?: string
+          is_confirmed?: boolean | null
+          location_lat?: number | null
+          location_lng?: number | null
+          location_name?: string | null
+          reported_at?: string
+          severity?: string
+          symptoms?: string[] | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      vaccination_records: {
+        Row: {
+          batch_number: string | null
+          created_at: string
+          date_administered: string
+          healthcare_provider: string | null
+          id: string
+          next_due_date: string | null
+          notes: string | null
+          updated_at: string
+          user_id: string
+          vaccine_name: string
+        }
+        Insert: {
+          batch_number?: string | null
+          created_at?: string
+          date_administered: string
+          healthcare_provider?: string | null
+          id?: string
+          next_due_date?: string | null
+          notes?: string | null
+          updated_at?: string
+          user_id: string
+          vaccine_name: string
+        }
+        Update: {
+          batch_number?: string | null
+          created_at?: string
+          date_administered?: string
+          healthcare_provider?: string | null
+          id?: string
+          next_due_date?: string | null
+          notes?: string | null
+          updated_at?: string
+          user_id?: string
+          vaccine_name?: string
         }
         Relationships: []
       }
