@@ -118,6 +118,18 @@ const Auth = () => {
             description: "Please check your email and password and try again.",
             variant: "destructive",
           });
+        } else if (error.message.includes("Email not confirmed")) {
+          toast({
+            title: "Email not confirmed",
+            description: "Please check your email and click the confirmation link before signing in.",
+            variant: "destructive",
+          });
+        } else if (error.message.includes("requested path is invalid")) {
+          toast({
+            title: "Configuration Error",
+            description: "Please contact support - authentication is not properly configured.",
+            variant: "destructive",
+          });
         } else {
           toast({
             title: "Error",
