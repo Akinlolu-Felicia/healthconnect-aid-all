@@ -26,6 +26,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { useToast } from "@/hooks/use-toast";
 import { format, addDays } from "date-fns";
+import { PaymentIntegration } from "./PaymentIntegration";
 
 interface Doctor {
   id: string;
@@ -398,15 +399,24 @@ export const FunctionalDoctorDirectory = () => {
                               />
                             </div>
 
-                            <div className="flex items-center justify-between pt-2 border-t">
-                              <span className="text-sm text-muted-foreground">
-                                Consultation Fee: ${selectedDoctor.consultation_fee}
-                              </span>
+                            <div className="space-y-4 pt-4 border-t">
+                              <PaymentIntegration
+                                appointmentId="temp-id"
+                                amount={selectedDoctor.consultation_fee}
+                                doctorName={selectedDoctor.name}
+                                onPaymentSuccess={() => {
+                                  if (appointmentData.scheduled_at && appointmentData.symptoms) {
+                                    bookAppointment();
+                                  }
+                                }}
+                              />
                               <Button
                                 onClick={bookAppointment}
                                 disabled={!appointmentData.scheduled_at || !appointmentData.symptoms}
+                                variant="outline"
+                                className="w-full"
                               >
-                                Book Appointment
+                                Book Without Payment
                               </Button>
                             </div>
                           </div>

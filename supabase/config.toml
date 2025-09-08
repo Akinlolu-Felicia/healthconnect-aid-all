@@ -1,1 +1,49 @@
 project_id = "tguztpestoypsdrqyqin"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[auth]
+enabled = true
+site_url = "https://9f38466c-a5ca-4a5c-988f-d79067a280b3.lovableproject.com"
+additional_redirect_urls = ["https://localhost:3000"]
+jwt_expiry = 3600
+enable_signup = true
+enable_anonymous_sign_ins = false
+
+[auth.email]
+enable_signup = true
+double_confirm_changes = true
+enable_confirmations = false
+
+[db]
+port = 54322
+shadow_port = 54320
+major_version = 15
+
+[db.pooler]
+enabled = false
+port = 54329
+pool_mode = "transaction"
+default_pool_size = 20
+max_client_conn = 100
+
+[realtime]
+enabled = true
+ip_version = "ipv4"
+
+[storage]
+enabled = true
+file_size_limit = "50MiB"
+allowed_mime_types = ["image/png", "image/jpg", "image/jpeg", "image/gif", "image/webp"]
+
+[edge_functions]
+enabled = true
+ip_version = "ipv4"
+
+[functions.create-payment]
+verify_jwt = true
