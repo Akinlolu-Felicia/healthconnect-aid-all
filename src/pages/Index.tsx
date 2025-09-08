@@ -20,11 +20,12 @@ import { FunctionalHealthAssistant } from "@/components/FunctionalHealthAssistan
 import { FunctionalDoctorDirectory } from "@/components/FunctionalDoctorDirectory";
 import { FunctionalHealthDashboard } from "@/components/FunctionalHealthDashboard";
 import { EmergencySupport } from "@/components/EmergencySupport";
+import { UserProfile } from "@/components/UserProfile";
 import { useAuth } from "@/hooks/useAuth";
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState("home");
-  const { user, loading, signOut } = useAuth();
+  const { user, profile, loading, signOut } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -79,7 +80,9 @@ const Index = () => {
               </div>
               <div>
                 <h1 className="text-xl font-bold text-foreground">HealthConnect</h1>
-                <p className="text-xs text-muted-foreground">Good Health & Well-being</p>
+                <p className="text-xs text-muted-foreground">
+                  {profile?.full_name ? `Welcome back, ${profile.full_name.split(' ')[0]}!` : 'Good Health & Well-being'}
+                </p>
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -104,7 +107,7 @@ const Index = () => {
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8">
           {/* Navigation */}
           <div className="flex justify-center">
-            <TabsList className="grid grid-cols-5 w-fit bg-background/50 backdrop-blur-md shadow-lg">
+            <TabsList className="grid grid-cols-6 w-fit bg-background/50 backdrop-blur-md shadow-lg">
               <TabsTrigger value="home" className="gap-2">
                 <Heart className="h-4 w-4" />
                 Home
@@ -124,6 +127,10 @@ const Index = () => {
               <TabsTrigger value="emergency" className="gap-2">
                 <Shield className="h-4 w-4" />
                 Emergency
+              </TabsTrigger>
+              <TabsTrigger value="profile" className="gap-2">
+                <Users className="h-4 w-4" />
+                Profile
               </TabsTrigger>
             </TabsList>
           </div>
@@ -272,6 +279,10 @@ const Index = () => {
 
           <TabsContent value="emergency">
             <EmergencySupport />
+          </TabsContent>
+
+          <TabsContent value="profile">
+            <UserProfile />
           </TabsContent>
         </Tabs>
       </main>

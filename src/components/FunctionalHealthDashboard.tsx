@@ -58,7 +58,7 @@ interface MedicationLog {
 }
 
 export const FunctionalHealthDashboard = () => {
-  const { user } = useAuth();
+  const { user, profile } = useAuth();
   const { toast } = useToast();
   const [healthMetrics, setHealthMetrics] = useState<HealthMetric[]>([]);
   const [medications, setMedications] = useState<Medication[]>([]);
@@ -296,7 +296,12 @@ export const FunctionalHealthDashboard = () => {
   return (
     <div className="space-y-8">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-foreground">Health Dashboard</h2>
+        <div>
+          <h2 className="text-2xl font-bold text-foreground">
+            {profile?.full_name ? `${profile.full_name.split(' ')[0]}'s Health Dashboard` : 'Health Dashboard'}
+          </h2>
+          <p className="text-muted-foreground">Track your health metrics and medications</p>
+        </div>
         <div className="flex gap-2">
           <Dialog>
             <DialogTrigger asChild>
